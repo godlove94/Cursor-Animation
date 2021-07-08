@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cursor Animation</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="cursor"></div>
+
+        <section class="main">
+            <h1>cursor Animation</h1>
+        </section>
+
+
+        <script type="text/javascript">
+            const cursor = document.querySelector(".cursor");
+            var timeout;
+
+            // cursor movement 
+            document.addEventListener("mousemove", (e) => {
+                let x = e.pageX;
+                let y = e.pageY;
+
+                cursor.style.top = y + 'px';
+                cursor.style.left = x + 'px';
+                cursor.style.display = 'block';
+
+
+
+                // hide animation
+                clearTimeout(timeout);
+                timeout = setTimeout(mouseStop, 1000);
+
+
+                // stop animation
+                function mouseStop () {
+                    cursor.style.display = 'none';
+                }
+
+
+            })
+
+            //stop animation off the sreen
+            document.addEventListener("mouseout", () => {
+                cursor.style.display = 'none';
+            })
+
+
+
+        </script>
+
+    </body>
+</html>
